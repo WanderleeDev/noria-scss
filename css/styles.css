@@ -1,116 +1,114 @@
 body {
   display: grid;
   place-content: center;
+  background-color: darkseagreen;
 }
 
 .noria {
   position: relative;
-  width: 4rem;
-  height: 4rem;
+  width: 5rem;
+  height: 5rem;
 }
 .noria__ejeCentral {
   position: absolute;
+  width: 5rem;
+  height: 5rem;
   inset: 0;
-}
-.noria__ejeCentral .ejeCentral__img {
-  position: absolute;
-  border-radius: 1rem;
-  background-color: rgba(100, 148, 237, 0.518);
   aspect-ratio: 1/1;
+  position: absolute;
 }
-.noria__ejeCentral .ejeCentral__img--zIndex-1 {
-  z-index: 1;
+.noria__ejeCentral:hover:nth-child(1) {
+  transform: rotate(45deg);
 }
-.noria__ejeCentral .ejeCentral__img--zIndex-1:hover {
-  opacity: 0;
-  transition: opacity 0.5s ease;
-}
-.noria__containerBoxes {
+.noria__ejeCentral .noria__imgEje {
   position: absolute;
   width: 100%;
   height: 100%;
+  background-color: aliceblue;
+  border-radius: 1rem;
+  aspect-ratio: 1/1;
+  transition: opacity 5s linear;
+}
+.noria__containerBoxes {
+  --time: 30s;
+  --size: 5rem;
+  --distancia: 150px;
+  --deg: 0deg;
+  position: absolute;
   display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 5rem;
+  height: 5rem;
+  animation: girar var(--time) infinite linear;
+}
+.noria__containerBoxes:hover * {
+  animation-play-state: paused;
 }
 .noria__containerBoxes :nth-child(1) {
-  --deg: 1 * 360 / 3;
+  --deg: calc((360deg / 10 ) * 0);
 }
 .noria__containerBoxes :nth-child(2) {
-  --deg: 2 * 360 / 3;
+  --deg: calc((360deg / 10 ) * 1);
 }
 .noria__containerBoxes :nth-child(3) {
-  --deg: 3 * 360 / 3;
+  --deg: calc((360deg / 10 ) * 2);
 }
 .noria__containerBoxes :nth-child(4) {
-  --deg: 4 * 360 / 3;
+  --deg: calc((360deg / 10 ) * 3);
 }
 .noria__containerBoxes :nth-child(5) {
-  --deg: 5 * 360 / 3;
+  --deg: calc((360deg / 10 ) * 4);
 }
 .noria__containerBoxes :nth-child(6) {
-  --deg: 6 * 360 / 3;
+  --deg: calc((360deg / 10 ) * 5);
 }
 .noria__containerBoxes :nth-child(7) {
-  --deg: 7 * 360 / 3;
+  --deg: calc((360deg / 10 ) * 6);
 }
 .noria__containerBoxes :nth-child(8) {
-  --deg: 8 * 360 / 3;
+  --deg: calc((360deg / 10 ) * 7);
 }
 .noria__containerBoxes :nth-child(9) {
-  --deg: 9 * 360 / 3;
+  --deg: calc((360deg / 10 ) * 8);
 }
 .noria__containerBoxes :nth-child(10) {
-  --deg: 10 * 360 / 3;
+  --deg: calc((360deg / 10 ) * 9);
 }
-.noria__containerBoxes :nth-child(11) {
-  --deg: 11 * 360 / 3;
-}
-.noria__containerBoxes :nth-child(12) {
-  --deg: 12 * 360 / 3;
-}
-.noria__box {
-  --distancia: 100px;
-  --deg: 0deg;
-  --total: 3;
-  display: grid;
-  width: 2rem;
-  height: 2rem;
+.noria__containerBoxes .noria__box {
   position: absolute;
-  border-radius: 50%;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-.noria__boxElements {
-  display: grid;
-  place-items: center;
-  border: 2px solid red;
-  border-radius: 50%;
+  height: var(--size);
+  width: var(--size);
+  padding: 0.5rem;
   transform: translate(calc(cos(var(--deg)) * var(--distancia)), calc(sin(var(--deg)) * var(--distancia)));
 }
-.noria__boxElements:hover .noria__img {
-  opacity: 1;
-  transform: scale(0.5);
-}
-.noria__img {
-  width: 100%;
-  display: block;
-  background-color: black;
-  padding: 0.5rem;
+.noria__containerBoxes .noria__box .noria__boxElements {
+  position: relative;
+  background-color: antiquewhite;
   border-radius: 50%;
-  aspect-ratio: 1/1;
-  object-fit: cover;
-  animation: rotar 40s linear infinite reverse;
+  padding: 0.5rem;
+  animation: girar var(--time) infinite linear reverse, scale 2s ease infinite;
 }
-.noria__text {
-  position: absolute;
-  inset: 0;
-  z-index: -1;
+.noria__containerBoxes .noria__box .noria__boxElements .noria__img {
+  aspect-ratio: 1/1;
+  object-fit: contain;
+}
+.noria__containerBoxes .noria__box .noria__boxElements .noria__text {
+  color: aliceblue;
 }
 
-@keyframes rotar {
+@keyframes scale {
   0% {
-    transform: rotate(0);
+    scale: 1;
   }
+  50% {
+    scale: 1.07;
+  }
+  100% {
+    scale: 1;
+  }
+}
+@keyframes girar {
   100% {
     transform: rotate(360deg);
   }
