@@ -5,89 +5,124 @@ body {
 }
 
 .noria {
+  --size: 7rem;
   position: relative;
-  width: 5rem;
-  height: 5rem;
+  width: var(--size);
+  height: var(--size);
 }
 .noria__ejeCentral {
   position: absolute;
-  width: 5rem;
-  height: 5rem;
+  width: var(--size);
+  height: var(--size);
   inset: 0;
   aspect-ratio: 1/1;
   position: absolute;
 }
-.noria__ejeCentral:hover:nth-child(1) {
-  transform: rotate(45deg);
-}
 .noria__ejeCentral .noria__imgEje {
   position: absolute;
-  width: 100%;
-  height: 100%;
+  width: var(--size);
+  height: var(--size);
   background-color: aliceblue;
   border-radius: 1rem;
   aspect-ratio: 1/1;
-  transition: opacity 5s linear;
+  transition: opacity 0.5s linear;
+}
+.noria__ejeCentral .noria__imgEje--zIndex-1 {
+  z-index: 1;
+}
+.noria__ejeCentral .noria__imgEje--zIndex-1:hover {
+  opacity: 0;
 }
 .noria__containerBoxes {
   --time: 30s;
-  --size: 5rem;
-  --distancia: 150px;
+  --distancia: calc(var(--size) + 80px);
   --deg: 0deg;
   position: absolute;
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 5rem;
-  height: 5rem;
+  width: var(--size);
+  height: var(--size);
   animation: girar var(--time) infinite linear;
 }
-.noria__containerBoxes:hover * {
+.noria__containerBoxes:hover {
   animation-play-state: paused;
+  --pausarAnimaciones: paused;
 }
 .noria__containerBoxes :nth-child(1) {
-  --deg: calc((360deg / 10 ) * 0);
-}
-.noria__containerBoxes :nth-child(2) {
   --deg: calc((360deg / 10 ) * 1);
 }
-.noria__containerBoxes :nth-child(3) {
+.noria__containerBoxes :nth-child(2) {
   --deg: calc((360deg / 10 ) * 2);
 }
-.noria__containerBoxes :nth-child(4) {
+.noria__containerBoxes :nth-child(3) {
   --deg: calc((360deg / 10 ) * 3);
 }
-.noria__containerBoxes :nth-child(5) {
+.noria__containerBoxes :nth-child(4) {
   --deg: calc((360deg / 10 ) * 4);
 }
-.noria__containerBoxes :nth-child(6) {
+.noria__containerBoxes :nth-child(5) {
   --deg: calc((360deg / 10 ) * 5);
 }
-.noria__containerBoxes :nth-child(7) {
+.noria__containerBoxes :nth-child(6) {
   --deg: calc((360deg / 10 ) * 6);
 }
-.noria__containerBoxes :nth-child(8) {
+.noria__containerBoxes :nth-child(7) {
   --deg: calc((360deg / 10 ) * 7);
 }
-.noria__containerBoxes :nth-child(9) {
+.noria__containerBoxes :nth-child(8) {
   --deg: calc((360deg / 10 ) * 8);
 }
-.noria__containerBoxes :nth-child(10) {
+.noria__containerBoxes :nth-child(9) {
   --deg: calc((360deg / 10 ) * 9);
+}
+.noria__containerBoxes :nth-child(10) {
+  --deg: calc((360deg / 10 ) * 10);
+}
+.noria__containerBoxes .noria__box:nth-child(1) .noria__boxElements {
+  background-color: red;
+}
+.noria__containerBoxes .noria__box:nth-child(2) .noria__boxElements {
+  background-color: #fefefe;
+}
+.noria__containerBoxes .noria__box:nth-child(3) .noria__boxElements {
+  background-color: green;
+}
+.noria__containerBoxes .noria__box:nth-child(4) .noria__boxElements {
+  background-color: purple;
+}
+.noria__containerBoxes .noria__box:nth-child(5) .noria__boxElements {
+  background-color: rgb(83, 87, 88);
+}
+.noria__containerBoxes .noria__box:nth-child(6) .noria__boxElements {
+  background-color: red;
+}
+.noria__containerBoxes .noria__box:nth-child(7) .noria__boxElements {
+  background-color: blue;
+}
+.noria__containerBoxes .noria__box:nth-child(8) .noria__boxElements {
+  background-color: green;
+}
+.noria__containerBoxes .noria__box:nth-child(9) .noria__boxElements {
+  background-color: purple;
+}
+.noria__containerBoxes .noria__box:nth-child(10) .noria__boxElements {
+  background-color: skyblue;
 }
 .noria__containerBoxes .noria__box {
   position: absolute;
-  height: var(--size);
-  width: var(--size);
+  height: calc(var(--size) / 1.2);
+  width: calc(var(--size) / 1.2);
   padding: 0.5rem;
   transform: translate(calc(cos(var(--deg)) * var(--distancia)), calc(sin(var(--deg)) * var(--distancia)));
 }
 .noria__containerBoxes .noria__box .noria__boxElements {
   position: relative;
-  background-color: antiquewhite;
   border-radius: 50%;
   padding: 0.5rem;
   animation: girar var(--time) infinite linear reverse, scale 2s ease infinite;
+  overflow: hidden;
+  animation-play-state: var(--pausarAnimaciones);
 }
 .noria__containerBoxes .noria__box .noria__boxElements .noria__img {
   aspect-ratio: 1/1;
